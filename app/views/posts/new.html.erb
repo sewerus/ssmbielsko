@@ -1,0 +1,18 @@
+<div class="clearfix"></div>
+    <div class="well">
+      <div class="row">
+        <div class="edit">
+          <div class="main">
+
+            <%= simple_form_for(@post) do |f| %>
+                <%= f.input :title, label: "Tytuł:" %> <br>
+                <%= f.input :img, as: :string, label: "Link do obrazu:" %><br>
+                <%= f.input :content, label: "Treść:" %><br>
+                <%#= f.input :author, label: "Autor:" %><br>
+                <%= f.button :submit, 'Utwórz!' %>
+            <% end %>
+
+          </div>
+        </div>
+      </div>
+    </div>

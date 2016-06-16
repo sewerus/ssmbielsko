@@ -1,0 +1,39 @@
+<div class="posts">
+
+  <% if user_signed_in? %>
+  <div class="well row">
+    <div>
+      <h3><%= link_to 'Nowy post', new_post_path if user_signed_in? %></h3>
+    </div>
+  </div>
+  <% end %>
+
+  <% @posts.each do |post| %>
+
+      <div class="well row">
+        <div>
+          <h2>
+            <%= post.title %>
+          </h2>
+          <%= link_to 'Edytuj', [:edit, post] if user_signed_in? %><br>
+          <%= link_to 'Usuń', post, method: :delete, data: {confirm: 'Czy na pewno usunąć post?'} if user_signed_in? %>
+        </div>
+        <div>
+          <p>
+            <span class="glyphicon glyphicon-time"></span> <%= time_ago_in_words post.created_at %> temu<br>
+            <span class="glyphicon glyphicon-time"></span> <%= post.created_at.to_date %><br>
+            <!--przez <%#= post.author %> -->
+          </p>
+        </div>
+        <div>
+          <img class="img-responsive img-rounded" src="<%= post.img %>" alt="">
+        </div>
+        <div>
+          <br>
+          <p class="content"><%= post.content %></p>
+        </div>
+      </div>
+  <% end %>
+  <%#= will_paginate @posts, :previous_label => t("Poprzednia strona"), :next_label => t("Natępna strona") %>
+
+</div>
